@@ -1,0 +1,25 @@
+<div class=" mt-3">
+<div class="mb-3">
+  <iframe width="100%" height="300" [src]="video.url.replace('watch','embed') | safe">
+
+  </iframe>
+</div>
+<form >
+  <div *ngIf="editTitle"  class="form-group">
+    <input type="text" class="form-control" name="title" [(ngModel)]="video.title"
+    required placeholder="title">
+  </div>
+  <h3 *ngIf="!editTitle" (click)="onTitleClick()">{{video.title}}</h3>
+  <div class="form-group">
+    <input type="text" class="form-control" name="url" [(ngModel)]= "video.url"
+    required placeholder="url">
+  </div>
+  <div class="form-group">
+    <textarea class="form-control" rows="5" name="description" [(ngModel)]= "video.description">
+    </textarea>
+  </div>
+
+  <button type="button" (click)="updateVideo()" class="btn btn-success mr-4">Update</button>
+  <button type="button" (click)="deleteVideo()" class="btn btn-danger">Delete</button>
+</form>
+</div>
